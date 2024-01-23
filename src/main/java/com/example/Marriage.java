@@ -43,20 +43,29 @@ public class Marriage {
                         // if clause is for getting fish with minimum potential radius
                         distanceTillTheClosestFish = distanceBetweenTwoFish;
                         theClosestFish = anotherGenderFish;
-                        System.out.println("The new closest fish " + theClosestFish.getFishId() + " at " + theClosestFish.getxPosition());
+                        System.out.println("Another close fish " + theClosestFish.getFishId() + " at " + theClosestFish.getxPosition());
                     }
                 }
             }
             if (theClosestFish == null) { // if there is no any fish near to him/her
                 System.out.println("There is no close fish to fish " + fish.getFishId());
             } else {
-                // this clause, which will create new fish between the fish closest to given
-                System.out.println("The closest fish " + theClosestFish.getFishId() + " with fish " + fish.getFishId());
-                Fish childFish = new Fish();
-                childFish.start();
+                if(fishList.containsKey(theClosestFish.getFishId()) && fishList.containsKey(fish.getFishId())) {
+                    // this clause, which will create new fish between the fish closest to given
+                    fishList.remove(theClosestFish.getFishId());
+                    fishList.remove(fish.getFishId());
+                    //remove from fish list, because both of them already married
+                    marryToTheClosestFish(
+                            theClosestFish, fish
+                    );
+                }
             }
         }
-
+    }
+    private static void marryToTheClosestFish(Fish theClosestFish, Fish fish){
+        System.out.println("The closest fish " + theClosestFish.getFishId() + " with fish " + fish.getFishId());
+        Fish childFish = new Fish();
+        childFish.start();
     }
 
 

@@ -10,7 +10,6 @@ public class Fish extends Thread {
     private volatile String gender;
     private volatile Long duration;
     private volatile int id;
-    private volatile boolean isFishDead = false;
     public Fish(){
         this.gender = Random.getGender();
         this.duration = Random.getRandomDurationOfFishLife();
