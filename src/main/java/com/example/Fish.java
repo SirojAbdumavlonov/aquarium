@@ -17,17 +17,11 @@ public class Fish extends Thread {
         this.xPosition = Random.getRandomXPosition();
 
     }
-    public static int getTotalCount(){
-        return counter;
-    }
 
     public int getxPosition() {
         return xPosition;
     }
 
-    public void setxPosition(int xPosition) {
-        this.xPosition = xPosition;
-    }
 
 
     public int getFishId() {
@@ -38,20 +32,9 @@ public class Fish extends Thread {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Long duration) {
-        this.duration = duration;
-    }
 
     public void printFishDetails(){
-        System.out.println("Gender = " + gender + ", id = " + id + ", life expectancy = " + duration + " in ms, x position = " + xPosition);
+        System.out.println("Gender = " + gender + ", id = " + id + ", life expectancy = " + duration + " in ms");
     }
 
     @Override
@@ -59,15 +42,13 @@ public class Fish extends Thread {
 
         Random.addToRandom(gender, getFishId());
 
-        System.out.println("Fish with " + getFishId() + " id is swimming ...");
+        System.out.println(gender + " fish with " + getFishId() + " id is swimming ... at " + xPosition);
 
 
         try{
             Marriage.findClosestPartnerAndMarry(this);
 
             Thread.sleep(duration);
-
-            Random.removeFromRandom(gender, getFishId());//remove fish from randomizer
 
             fishList.remove(getFishId());//remove dead fish from aquarium
 

@@ -40,6 +40,5 @@ public class Aquarium {
             // and finish the process
             System.exit(0);
         }
-        System.out.println("Totally there were " + (Fish.counter - 1));
     }
 }

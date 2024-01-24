@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Random {
     private static final java.util.Random random = new java.util.Random();
-    public static final HashMap<Integer, Integer> maleIds = new HashMap<>();
+    public static int maleIds = 0;
     // male threads(fish) with their id as key and id as object
-    public static final HashMap<Integer, Integer> femaleIds = new HashMap<>();
+    public static int femaleIds = 0;
     // female threads(fish) with their id as key and id as object
 
     public static String getGender(){ // get random gender
@@ -32,28 +32,19 @@ public class Random {
         return random.nextInt(maxXPosition - minXPosition + 1) + minXPosition;
     }
     public synchronized static void addToRandom(String gender, int id){
-        // while getting gender, it will add to list of male or female thread
+//        // while getting gender, it will add to list of male or female thread
         if (gender.equals("MALE")){
-            maleIds.put(id, id);
+            maleIds++;
         }
         else {
-            femaleIds.put(id, id);
+            femaleIds++;
         }
     }
 
-    public synchronized static void removeFromRandom(String gender, int id){
-
-        if (gender.equals("MALE")){
-            maleIds.remove(id);
-        }
-        else {
-            femaleIds.remove(id);
-        }
-    }
     public static int getLengthOfMaleIds(){
-        return maleIds.size();
+        return maleIds;
     }
     public static int getLengthOfFemaleIds(){
-        return femaleIds.size();
+        return femaleIds;
     }
 }

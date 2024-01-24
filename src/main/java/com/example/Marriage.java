@@ -18,7 +18,7 @@ public class Marriage {
 
         int distanceTillTheClosestFish = potentialRadius;
 
-        if(!(Random.maleIds.isEmpty() || Random.femaleIds.isEmpty())) {//if one of them is empty, it will finish marrying
+        if(!(Random.maleIds == 0 || Random.femaleIds == 0)) {//if one of them is empty, it will finish marrying
 
             for (Map.Entry<Integer, Fish> entry : fishList.entrySet()) {
 
